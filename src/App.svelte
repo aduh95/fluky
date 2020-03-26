@@ -1,5 +1,8 @@
 <script>
-  //   export let name;
+  import Button from "./Button.svelte";
+  function handleClick() {
+    console.log(arguments);
+  }
 </script>
 
 <style>
@@ -51,6 +54,13 @@
     color: inherit;
     text-decoration: underline;
   }
+
+  footer {
+    font-size: 1rem;
+    align-self: end;
+    justify-self: center;
+    color: white;
+  }
 </style>
 
 <header>
@@ -65,3 +75,7 @@
     <a href="https://github.com/aduh95">aduh95</a>
   </p>
 </header>
+
+<footer>
+  <Button {handleClick} text="Start" />
+</footer>
