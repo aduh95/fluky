@@ -25,14 +25,20 @@
 
   h1 {
     font-size: 4rem;
+    line-height: 4rem;
     font-style: italic;
+    padding: 0.5rem 0;
+    transform-origin: bottom;
   }
 
   h4 {
     font-size: 1rem;
+    line-height: 1rem;
+    padding: 0.8rem 0;
     border: 5px solid #6ed2a0;
     border-right: none;
     border-left: none;
+    transform-origin: top;
   }
   p {
     margin-top: 2rem;
