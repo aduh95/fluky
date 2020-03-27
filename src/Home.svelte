@@ -10,9 +10,20 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 1rem;
+    padding: 1rem 0.25rem;
     margin: 0 auto;
+
     place-self: center;
+    animation: fadeIn 800ms ease-out;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-60px);
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   h1,

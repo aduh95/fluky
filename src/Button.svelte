@@ -17,8 +17,9 @@
     padding: 0;
 
     box-sizing: content-box;
+    min-width: 200px;
     width: 50vw;
-    height: 4rem;
+    height: 3rem;
 
     -webkit-appearance: none;
     appearance: none;
@@ -28,6 +29,7 @@
     align-items: center;
 
     place-self: center;
+    transition: transform 100ms;
   }
 
   button::before {
@@ -42,11 +44,20 @@
     border-color: transparent;
 
     border-bottom-color: var(--bg-color, #000);
-    transition: border-bottom-width 100ms;
+    transition: transform 100ms;
   }
 
+  @media screen and (max-width: 500px) {
+    button::before {
+      border-width: 0 5rem 4rem;
+    }
+  }
+
+  button:hover {
+    transform: translateY(-0.5rem);
+  }
   button:hover::before {
-    border-bottom-width: 5rem;
+    transform: scaleY(1.25);
   }
 </style>
 
