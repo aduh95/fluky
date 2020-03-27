@@ -19,21 +19,35 @@
 
     const pick = Math.random() * 9;
     const finalRotation = `rotate(${5 + pick}turn)`;
-    const animation = circle.animate(
-      { transform: ["none", finalRotation] },
-      {
-        delay: 1000 + Math.random() * 1000,
-        duration: 3000 + Math.random() * 1000,
-        easing: "ease-out"
-      }
-    );
 
-    animation.addEventListener("finish", () => {
-      circle.style.transform = finalRotation;
+    if (Element.prototype.animate) {
+      const animation = circle.animate(
+        { transform: ["none", finalRotation] },
+        {
+          delay: 1000 + Math.random() * 1000,
+          duration: 3000 + Math.random() * 1000,
+          easing: "ease-out"
+        }
+      );
+
+      animation.addEventListener("finish", () => {
+        circle.style.transform = finalRotation;
+        setTimeout(() => {
+          nextStep(findWinner(pick));
+        }, Math.random() * 1000);
+      });
+    } else {
+      circle.style.transition = "transform 3s ease-out";
       setTimeout(() => {
-        nextStep(findWinner(pick));
-      }, Math.random() * 1000);
-    });
+        circle.style.transform = finalRotation;
+      }, 1000 + Math.random() * 1000);
+
+      circle.addEventListener("transitionend", () => {
+        setTimeout(() => {
+          nextStep(findWinner(pick));
+        }, Math.random() * 1000);
+      });
+    }
   });
 </script>
 
