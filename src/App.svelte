@@ -2,6 +2,7 @@
   import Home from "./Home.svelte";
   import ListMaker from "./ListMaker.svelte";
   import RollTheDice from "./RollTheDice.svelte";
+  import CelebrateWinner from "./CelebrateWinner.svelte";
   export let state;
 
   const items = [];
@@ -20,6 +21,12 @@
     state.rollTheDice = false;
     state.celebrateWinner = true;
     state.winner = winner;
+  }
+
+  function backToItemScreen() {
+    state.celebrateWinner = false;
+    items.splice(0, items.length);
+    state.fillItems = true;
   }
 </script>
 
