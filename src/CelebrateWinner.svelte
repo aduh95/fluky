@@ -20,7 +20,7 @@
     text-decoration: underline;
     transform: rotate(-9deg);
 
-    animation: fadeIn 1s;
+    animation: fadeIn 3s;
   }
   @keyframes fadeIn {
     from {
