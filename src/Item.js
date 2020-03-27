@@ -6,7 +6,7 @@ function generateRandomColor() {
   } while (colorCache.has(color));
 
   colorCache.add(color);
-  return "#" + color.toString(16);
+  return "#" + "0".repeat(6 - Math.log2(color) / 4) + color.toString(16);
 }
 
 export default class Item {
