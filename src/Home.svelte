@@ -74,5 +74,5 @@
 </header>
 
 <footer>
-  <Button handleClick={switchToFillItemScreen} text="Start" />
+  <Button handleClick={switchToFillItemScreen} text="Start" autofocus />
 </footer>

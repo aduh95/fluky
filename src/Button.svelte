@@ -50,4 +50,4 @@
   }
 </style>
 
-<button on:click={handleClick}>{text}</button>
+<button on:click={handleClick} {...$$restProps}>{text}</button>
