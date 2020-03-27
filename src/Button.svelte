@@ -41,7 +41,7 @@
     border-style: solid;
     border-color: transparent;
 
-    border-bottom-color: var(--color, #6ed2a0);
+    border-bottom-color: var(--bg-color, #000);
     transition: border-bottom-width 100ms;
   }
 
