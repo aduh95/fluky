@@ -63,6 +63,7 @@
   }
   div > * {
     border: none;
+    border-bottom: 1px solid grey;
     box-sizing: border-box;
     height: 2rem;
     width: 100%;
@@ -75,6 +76,11 @@
     font-size: 1rem;
     padding: 0 1rem;
     border-radius: 0;
+  }
+  input[type="button"] {
+    /* Safari bug */
+    -webkit-appearance: none;
+    padding: 0;
   }
 
   fieldset {
