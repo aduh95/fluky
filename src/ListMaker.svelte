@@ -1,7 +1,7 @@
 <script>
   import Button from "./Button.svelte";
   import Item from "./Item.js";
-  export let items;
+  export let items, nextStep;
 
   let antiRebound = 0;
 
@@ -43,6 +43,8 @@
         { passive: true, once: true }
       );
       e.target.reportValidity();
+    } else {
+      nextStep();
     }
   }
 </script>
@@ -112,7 +114,7 @@
     </fieldset>
 
     <fieldset>
-      <Button handleClick={console.log} text="Go" type="submit" />
+      <Button text="Go" type="submit" />
     </fieldset>
   </form>
 

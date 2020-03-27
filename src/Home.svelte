@@ -1,6 +1,6 @@
 <script>
   import Button from "./Button.svelte";
-  export let switchToFillItemScreen;
+  export let nextStep;
 </script>
 
 <style>
@@ -74,5 +74,5 @@
 </header>
 
 <footer>
-  <Button handleClick={switchToFillItemScreen} text="Start" autofocus />
+  <Button handleClick={nextStep} text="Start" autofocus />
 </footer>

@@ -1,5 +1,5 @@
 <script>
-  export let handleClick;
+  export let handleClick = Function.prototype;
   export let text;
 </script>
 
