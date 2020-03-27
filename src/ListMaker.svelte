@@ -83,7 +83,10 @@
       <!-- Using <div> instead of <fieldset> because of Blink bug -->
       <!-- @see https://bugs.chromium.org/p/chromium/issues/detail?id=375693 -->
       <div role="group" aria-label={`Item #${index + 1}`}>
-        <input aria-label="item to pick from" bind:value={item.label} />
+        <input
+          aria-label="Describe the item"
+          required
+          bind:value={item.label} />
         <!-- svelte-ignore a11y-positive-tabindex -->
         <input
           type="button"
