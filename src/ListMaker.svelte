@@ -3,12 +3,23 @@
   import Item from "./Item.js";
   export let items;
 
+  let antiRebound = 0;
+
   function addNewItem(e) {
-    items[items.length] = new Item(e.target.value);
-    e.target.value = "";
-    requestAnimationFrame(() =>
-      e.target.form.querySelector("div:last-of-type>input").focus()
-    );
+    if (antiRebound === 0) {
+      const item = new Item(e.target.value);
+      items[items.length] = item;
+      antiRebound = requestAnimationFrame(() => {
+        const newInputElement = e.target.form.querySelector(
+          "div:last-of-type>input"
+        );
+        item.label = e.target.value;
+        e.target.value = "";
+        antiRebound = 0;
+
+        newInputElement.focus();
+      });
+    }
   }
 
   function handleSubmit(e) {
