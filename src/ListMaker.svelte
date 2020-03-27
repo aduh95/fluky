@@ -71,6 +71,12 @@
     order: 1;
   }
 
+  input {
+    font-size: 1rem;
+    padding: 0 1rem;
+    border-radius: 0;
+  }
+
   fieldset {
     border: none;
     margin: 0;
