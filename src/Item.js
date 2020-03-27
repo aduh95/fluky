@@ -18,4 +18,8 @@ export default class Item {
   get color() {
     return this._color;
   }
+
+  remove() {
+    colorCache.delete(this._color);
+  }
 }

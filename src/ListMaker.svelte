@@ -11,7 +11,7 @@
       items[items.length] = item;
       antiRebound = requestAnimationFrame(() => {
         const newInputElement = e.target.form.querySelector(
-          "div:last-of-type>input"
+          "div:last-of-type>input:last-child"
         );
         item.label = e.target.value;
         e.target.value = "";
@@ -22,10 +22,18 @@
     }
   }
 
+  function deleteItem(i) {
+    return e => {
+      const [item] = items.splice(i, 1);
+      items = items;
+      item.remove();
+    };
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     if (items.length < 2) {
-      const input = e.target.querySelector("div:first-of-type>input");
+      const input = e.target.querySelector("fieldset:first-of-type>input");
       input.required = true;
       input.addEventListener(
         "input",
@@ -57,6 +65,9 @@
     height: 2rem;
     width: 100%;
   }
+  div > :first-child {
+    order: 1;
+  }
 
   fieldset {
     border: none;
@@ -72,7 +83,7 @@
   fieldset:last-of-type {
     --bg-color: var(--text-color);
     color: #fff;
-    justify-self: end;
+    margin-top: auto;
     align-self: center;
   }
 </style>
@@ -84,16 +95,15 @@
       <!-- @see https://bugs.chromium.org/p/chromium/issues/detail?id=375693 -->
       <div role="group" aria-label={`Item #${index + 1}`}>
         <input
+          type="button"
+          value="x"
+          on:click={deleteItem(index)}
+          title="Delete entry"
+          style={`background-color:${item.color}`} />
+        <input
           aria-label="Describe the item"
           required
           bind:value={item.label} />
-        <!-- svelte-ignore a11y-positive-tabindex -->
-        <input
-          type="button"
-          value="x"
-          title="Delete entry"
-          tabindex="1"
-          style={`background-color:${item.color}`} />
       </div>
     {/each}
     <fieldset>
