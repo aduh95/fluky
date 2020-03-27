@@ -9,12 +9,30 @@
     display: flex;
     width: 100%;
     height: 100%;
-    text-align: center;
     color: var(--text-color);
   }
 
+  h2 {
+    margin: auto;
+
+    font-family: Barrio, sans-serif;
+    font-size: 3rem;
+    text-decoration: underline;
+    transform: rotate(-9deg);
+
+    animation: fadeIn 1s;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-40px) rotate(-9deg);
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   footer {
-    --bg-color: var(--text-color);
     font-size: 1rem;
     align-self: end;
     justify-self: center;
@@ -22,8 +40,10 @@
   }
 </style>
 
-<main style={`--text-color: ${winner.color}`}>{winner.label}</main>
+<main style={`--text-color: ${winner.color}`}>
+  <h2>{winner.label}</h2>
+</main>
 
-<footer>
+<footer style={`--bg-color: ${winner.color}`}>
   <Button handleClick={nextStep} text="Restart" autofocus />
 </footer>

@@ -37,5 +37,5 @@
 {:else if state.rollTheDice}
   <RollTheDice {items} nextStep={switchToWinScreen} />
 {:else if state.celebrateWinner}
-  <div>{state.winner.label}</div>
+  <CelebrateWinner winner={state.winner} nextStep={backToItemScreen} />
 {/if}
