@@ -68,12 +68,20 @@
     height: 0;
 
     position: absolute;
-    top: 5vmin;
+    top: 5vh;
     right: 50%;
     transform: translate(50%, -50%);
     border: 3vmin solid transparent;
     border-bottom: none;
     border-top-color: #000;
+  }
+
+  @media screen and (orientation: portrait) {
+    main::after {
+      top: calc(50% - 50vw);
+      transform: translateX(50%);
+      border-width: 1rem;
+    }
   }
 </style>
 
