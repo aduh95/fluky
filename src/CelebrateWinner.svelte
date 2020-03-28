@@ -1,7 +1,12 @@
 <script>
+  import { onMount } from "svelte";
+  import CanvasAnimation from "./CanvasAnimation.js";
+
   import Button from "./Button.svelte";
   export let nextStep;
   export let winner;
+
+  onMount(() => new CanvasAnimation(document.getElementById("confetti"), 1.5));
 </script>
 
 <style>
@@ -43,6 +48,8 @@
 <main style={`--text-color: ${winner.color}`}>
   <h2>{winner.label}</h2>
 </main>
+
+<canvas id="confetti" />
 
 <footer style={`--bg-color: ${winner.color}`}>
   <Button handleClick={nextStep} text="Restart" autofocus />

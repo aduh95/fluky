@@ -1,6 +1,11 @@
 <script>
+  import { onMount } from "svelte";
+  import CanvasAnimation from "./CanvasAnimation.js";
+
   import Button from "./Button.svelte";
   export let nextStep;
+
+  onMount(() => new CanvasAnimation(document.getElementById("confetti"), 0.05));
 </script>
 
 <style>
@@ -83,6 +88,8 @@
     <a href="https://github.com/aduh95">aduh95</a>
   </p>
 </header>
+
+<canvas id="confetti" />
 
 <footer>
   <Button handleClick={nextStep} text="Start" autofocus />
