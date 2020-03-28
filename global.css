@@ -2,7 +2,16 @@
   font-size: 150%;
 
   --bg-color: #f7f0ee;
-  --text-color: #6ed2a0;
+  --text-color: #226d47;
+  --alt-color: #110a08;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #110a08;
+    --text-color: #6ed2a0;
+    --alt-color: #f7f0ee;
+  }
 }
 
 body {
