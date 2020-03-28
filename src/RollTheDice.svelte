@@ -56,6 +56,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 
     position: relative;
   }
@@ -73,7 +74,7 @@
     transform: translate(50%, -50%);
     border: 3vmin solid transparent;
     border-bottom: none;
-    border-top-color: #000;
+    border-top-color: var(--alt-color);
   }
 
   @media screen and (orientation: portrait) {

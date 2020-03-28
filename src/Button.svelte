@@ -9,17 +9,19 @@
     position: relative;
 
     font-size: inherit;
-    color: currentColor;
+    color: inherit;
+    font-style: italic;
+    font-weight: lighter;
     text-transform: uppercase;
-    cursor: pointer;
 
+    cursor: pointer;
     background: none;
-    padding: 0;
 
     box-sizing: content-box;
     min-width: 200px;
     width: 50vw;
     height: 3rem;
+    padding: 0;
 
     -webkit-appearance: none;
     appearance: none;
@@ -44,7 +46,7 @@
     border-color: transparent;
 
     border-bottom-color: var(--bg-color, #000);
-    transition: transform 100ms;
+    transition: inherit;
   }
 
   @media screen and (max-width: 500px) {
