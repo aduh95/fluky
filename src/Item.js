@@ -2,8 +2,8 @@ const goldenRatio = (1 + Math.sqrt(5)) / 2;
 let randomColorHue = Math.random();
 
 function generateRandomColor() {
-  const luminosity = Math.random() * 0.4 + 0.35;
-  const saturation = Math.random() * 0.3 + 0.6;
+  const saturation = Math.random() * 0.3 + 0.4;
+  const luminosity = Math.random() * 0.4 + 0.2;
   randomColorHue += goldenRatio;
   return `hsl(${randomColorHue}turn,${saturation * 100}%,${luminosity * 100}%)`;
 }
