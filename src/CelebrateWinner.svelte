@@ -6,7 +6,7 @@
   export let nextStep;
   export let winner;
 
-  onMount(() => new CanvasAnimation(document.getElementById("confetti"), 1.5));
+  onMount(() => new CanvasAnimation(document.getElementById("confetti"), 2));
 </script>
 
 <style>

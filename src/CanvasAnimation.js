@@ -11,9 +11,9 @@ const CONFETTI_HEIGHT = 10;
 const CONFETTI_WIDTH = 5;
 
 class Confetto {
-  constructor(height, offsetSpeed) {
+  constructor(height, speedAmplitude) {
     this._color = generateRandomColor();
-    this._speed = Math.random() / 8 + offsetSpeed;
+    this._speed = Math.random() * speedAmplitude + 0.125;
     this._seed = Math.random();
     this._offset = (Math.random() * 0xffff) | 0;
     this._positionX = this._offset;
@@ -53,10 +53,10 @@ export default class CanvasAnimation {
     const nbOfConfetti = Math.sqrt(
       ((window.innerWidth * window.innerHeight) / 200) * density
     );
-    const offsetSpeed = Math.sqrt(density / 4);
+    const speedAmplitude = Math.sqrt(density / 6);
     this._confetti = Array.from(
       { length: nbOfConfetti },
-      () => new Confetto(window.innerHeight, offsetSpeed)
+      () => new Confetto(window.innerHeight, speedAmplitude)
     );
     this._draw = this.draw.bind(this);
     this._lastTimestamp = 0;
