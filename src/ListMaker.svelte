@@ -26,7 +26,6 @@
     return e => {
       const [item] = items.splice(i, 1);
       items = items;
-      item.remove();
     };
   }
 

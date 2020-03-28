@@ -1,12 +1,11 @@
-const colorCache = new Set();
-function generateRandomColor() {
-  let color;
-  do {
-    color = (Math.random() * 0xffffff) | 0;
-  } while (colorCache.has(color));
+const goldenRatio = (1 + Math.sqrt(5)) / 2;
+let randomColorHue = Math.random();
 
-  colorCache.add(color);
-  return "#" + "0".repeat(6 - Math.log2(color) / 4) + color.toString(16);
+function generateRandomColor() {
+  const luminosity = Math.random() * 0.4 + 0.35;
+  const saturation = Math.random() * 0.3 + 0.6;
+  randomColorHue += goldenRatio;
+  return `hsl(${randomColorHue}turn,${saturation * 100}%,${luminosity * 100}%)`;
 }
 
 export default class Item {
@@ -17,9 +16,5 @@ export default class Item {
 
   get color() {
     return this._color;
-  }
-
-  remove() {
-    colorCache.delete(this._color);
   }
 }
