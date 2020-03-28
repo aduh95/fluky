@@ -47,6 +47,9 @@
 
     border-bottom-color: var(--bg-color, #000);
     transition: inherit;
+
+    /* Safari hack */
+    will-change: transform;
   }
 
   @media screen and (max-width: 500px) {

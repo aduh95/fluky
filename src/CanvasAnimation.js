@@ -7,6 +7,9 @@ function generateRandomColor() {
   );
 }
 
+const CONFETTI_HEIGHT = 10;
+const CONFETTI_WIDTH = 5;
+
 class Confetto {
   constructor(height, offsetSpeed) {
     this._color = generateRandomColor();
@@ -32,10 +35,10 @@ class Confetto {
       1 - skew,
       skew,
       1,
-      this._positionX % width,
-      this._positionY % height
+      this._positionX % (width + CONFETTI_WIDTH),
+      (this._positionY % (height + CONFETTI_HEIGHT)) - CONFETTI_HEIGHT
     );
-    ctx.fillRect(0, 0, 10, 20);
+    ctx.fillRect(0, 0, CONFETTI_WIDTH, CONFETTI_HEIGHT);
   }
 }
 
