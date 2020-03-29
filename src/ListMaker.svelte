@@ -67,14 +67,20 @@
     height: 2rem;
     width: 100%;
   }
+
+  div > input {
+    background-color: var(--bg-color);
+    color: #fff;
+  }
   div > :first-child {
     order: 1;
   }
 
   input {
     font-size: 1rem;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
     border-radius: 0;
+    font-style: italic;
   }
   input[type="button"] {
     /* Safari bug */
@@ -106,16 +112,19 @@
     {#each items as item, index}
       <!-- Using <div> instead of <fieldset> because of Blink bug -->
       <!-- @see https://bugs.chromium.org/p/chromium/issues/detail?id=375693 -->
-      <div role="group" aria-label={`Item #${index + 1}`}>
+      <div
+        role="group"
+        aria-label={`Item #${index + 1}`}
+        style={`--bg-color:${item.color}`}>
         <input
           type="button"
           value="x"
           on:click={deleteItem(index)}
-          title="Delete entry"
-          style={`background-color:${item.color}`} />
+          title="Delete entry" />
         <input
           aria-label="Describe the item"
           required
+          type="text"
           bind:value={item.label} />
       </div>
     {/each}

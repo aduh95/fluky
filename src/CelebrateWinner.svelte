@@ -6,7 +6,10 @@
   export let nextStep;
   export let winner;
 
-  onMount(() => new CanvasAnimation(document.getElementById("confetti"), 2));
+  onMount(() => {
+    new CanvasAnimation(document.getElementById("confetti"), 2);
+    document.documentElement.style.setProperty("--bg-color", winner.color);
+  });
 </script>
 
 <style>
@@ -14,7 +17,7 @@
     display: flex;
     width: 100%;
     height: 100%;
-    color: var(--text-color);
+    color: #fff;
   }
 
   h2 {
@@ -24,6 +27,9 @@
     font-size: 3rem;
     text-decoration: underline;
     transform: rotate(-9deg);
+
+    max-width: 90vw;
+    text-align: center;
 
     animation: fadeIn 3s;
   }
@@ -41,16 +47,20 @@
     font-size: 1rem;
     align-self: end;
     justify-self: center;
-    color: white;
+    color: var(--bg-color);
   }
 </style>
 
-<main style={`--text-color: ${winner.color}`}>
+<main>
   <h2>{winner.label}</h2>
 </main>
 
 <canvas id="confetti" />
 
-<footer style={`--bg-color: ${winner.color}`}>
-  <Button handleClick={nextStep} text="Restart" autofocus />
+<footer>
+  <Button
+    handleClick={nextStep}
+    text="Restart"
+    autofocus
+    style="--bg-color:#fff" />
 </footer>
