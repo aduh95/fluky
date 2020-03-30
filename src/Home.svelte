@@ -5,7 +5,10 @@
   import Button from "./Button.svelte";
   export let nextStep;
 
-  onMount(() => new CanvasAnimation(document.getElementById("confetti"), 0.05));
+  onMount(
+    () =>
+      new CanvasAnimation(document.getElementById("confetti"), 0.12, "#95dbb7")
+  );
 </script>
 
 <style>

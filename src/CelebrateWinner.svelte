@@ -7,7 +7,7 @@
   export let winner;
 
   onMount(() => {
-    new CanvasAnimation(document.getElementById("confetti"), 2);
+    new CanvasAnimation(document.getElementById("confetti"), 0.66);
     document.documentElement.style.setProperty("--bg-color", winner.color);
   });
 

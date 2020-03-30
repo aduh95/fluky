@@ -11,13 +11,14 @@ const CONFETTI_HEIGHT = 10;
 const CONFETTI_WIDTH = 5;
 
 class Confetto {
-  constructor(height, speedAmplitude) {
-    this._color = generateRandomColor();
+  constructor(height, speedAmplitude, color = generateRandomColor()) {
+    this._color = color;
     this._speed = Math.random() * speedAmplitude + 0.125;
     this._seed = Math.random();
     this._offset = (Math.random() * 0xffff) | 0;
     this._positionX = this._offset;
     this._positionY = (1 - this._seed - (this._offset % 3)) * height;
+    this._positionZ = Math.random() + 0.3;
   }
 
   draw(ctx, skewIndex, { width, height }, deltaT) {
@@ -38,32 +39,40 @@ class Confetto {
       this._positionX % (width + CONFETTI_WIDTH),
       (this._positionY % (height + CONFETTI_HEIGHT)) - CONFETTI_HEIGHT
     );
-    ctx.fillRect(0, 0, CONFETTI_WIDTH, CONFETTI_HEIGHT);
+    ctx.fillRect(
+      0,
+      0,
+      CONFETTI_WIDTH * this._positionZ,
+      CONFETTI_HEIGHT * this._positionZ
+    );
   }
 }
 
 export default class CanvasAnimation {
-  constructor(canvas, density) {
+  constructor(canvas, speedAmplitude, color) {
     this._canvas = canvas;
     this._context = this._canvas.getContext("2d");
+    this._skewIndex = 0;
+    const density =
+      (speedAmplitude * speedAmplitude) / CONFETTI_WIDTH / CONFETTI_HEIGHT;
+    const nbOfConfetti = Math.sqrt(
+      window.innerWidth * window.innerHeight * density
+    );
+    this._confetti = Array.from(
+      { length: nbOfConfetti },
+      () => new Confetto(window.innerHeight, speedAmplitude, color)
+    );
+    this._draw = this.draw.bind(this);
+    requestAnimationFrame(timestamp => {
+      this._lastTimestamp = timestamp;
+      this.updateCanvasSize();
+    });
     addEventListener("resize", this.updateCanvasSize.bind(this), {
       passive: true,
     });
-    this._skewIndex = 0;
-    const nbOfConfetti = Math.sqrt(
-      ((window.innerWidth * window.innerHeight) / 200) * density
-    );
-    const speedAmplitude = Math.sqrt(density / 6);
-    this._confetti = Array.from(
-      { length: nbOfConfetti },
-      () => new Confetto(window.innerHeight, speedAmplitude)
-    );
-    this._draw = this.draw.bind(this);
-    this._lastTimestamp = 0;
-    this.updateCanvasSize();
   }
 
-  draw(timestamp = 0) {
+  draw(timestamp = this._lastTimestamp) {
     const { width, height } = this._canvas;
     const ctx = this._context;
     const skewIndex = this._skewIndex++;
