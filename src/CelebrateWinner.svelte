@@ -111,7 +111,7 @@
   </button>
 </main>
 
-<canvas id="confetti" />
+<canvas id="confetti" aria-label="Falling confetti" />
 
 <footer>
   <Button

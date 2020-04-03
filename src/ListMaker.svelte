@@ -99,7 +99,7 @@
     height: 2rem;
     width: 100%;
   }
-  fieldset:last-of-type {
+  footer {
     --bg-color: var(--text-color);
     color: #fff;
     margin-top: auto;
@@ -128,14 +128,14 @@
           bind:value={item.label} />
       </div>
     {/each}
-    <fieldset>
+    <fieldset aria-label="Add new element to the list">
       <!-- svelte-ignore a11y-autofocus -->
       <input on:input={addNewItem} placeholder="Add something" autofocus />
     </fieldset>
 
-    <fieldset>
+    <footer>
       <Button text="Go" type="submit" />
-    </fieldset>
+    </footer>
   </form>
 
 </main>

@@ -92,7 +92,7 @@
   </p>
 </header>
 
-<canvas id="confetti" />
+<canvas id="confetti" aria-label="Falling confetti" />
 
 <footer>
   <Button handleClick={nextStep} text="Start" autofocus />

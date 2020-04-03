@@ -15,6 +15,12 @@
       Math.min(window.innerHeight, window.innerWidth) * 0.9,
       items.map(item => item.color)
     );
+
+    circle.setAttribute("aria-label", "Rolling wheel");
+    for (const child of circle.children) {
+      child.setAttribute("role", "presentation");
+    }
+
     document.querySelector("main").append(circle);
 
     const pick = Math.random() * 9;
