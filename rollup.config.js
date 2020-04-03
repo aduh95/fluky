@@ -2,6 +2,7 @@ import svelte from "rollup-plugin-svelte";
 import resolve from "@rollup/plugin-node-resolve";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
+import rollupPluginServiceWorker from "./src/sw.js";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -45,6 +46,11 @@ export default {
     // If we're building for production (npm run build
     // instead of npm run dev), minify
     production && terser(),
+
+    rollupPluginServiceWorker({
+      public_folder: "public/",
+      enabled: production,
+    }),
   ],
   watch: {
     clearScreen: false,
