@@ -18,6 +18,9 @@
         ev.target.nextElementSibling.hidden = false;
       }
     });
+    document.getElementById("cheer").addEventListener("ended", ev => {
+      muteAudio.call(ev.target.nextElementSibling);
+    });
   });
 
   function muteAudio() {
