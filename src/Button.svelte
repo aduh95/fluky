@@ -20,7 +20,8 @@
     box-sizing: content-box;
     min-width: 200px;
     width: 50vw;
-    height: 3rem;
+    height: 4rem;
+    margin-top: 2rem;
     padding: 0;
 
     -webkit-appearance: none;
