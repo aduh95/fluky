@@ -26,32 +26,33 @@
     const pick = Math.random() * 9;
     const finalRotation = `rotate(${5 + pick}turn)`;
 
+    const delay = 1000 + Math.random() * 1000;
+    const duration = 6000 + Math.random() * 1000;
+    const easing = "cubic-bezier(0, 0, 0.001, 1.01)";
+    const delayAfterWhellStop = 300 + Math.random() * 1000;
+
     if (Element.prototype.animate) {
       const animation = circle.animate(
         { transform: ["none", finalRotation] },
-        {
-          delay: 1000 + Math.random() * 1000,
-          duration: 3000 + Math.random() * 1000,
-          easing: "ease-out"
-        }
+        { delay, duration, easing }
       );
 
       animation.addEventListener("finish", () => {
         circle.style.transform = finalRotation;
         setTimeout(() => {
           nextStep(findWinner(pick));
-        }, Math.random() * 1000);
+        }, delayAfterWhellStop);
       });
     } else {
-      circle.style.transition = "transform 3s ease-out";
+      circle.style.transition = `transform ${duration}ms ${easing}`;
       setTimeout(() => {
         circle.style.transform = finalRotation;
-      }, 1000 + Math.random() * 1000);
+      }, delay);
 
       circle.addEventListener("transitionend", () => {
         setTimeout(() => {
           nextStep(findWinner(pick));
-        }, Math.random() * 1000);
+        }, delayAfterWhellStop);
       });
     }
   });
