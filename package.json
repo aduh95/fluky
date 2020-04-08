@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
     "deploy": "gh-pages -d public",
-    "start": "sirv public"
+    "start": "rollup -c -w"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^7.0.0",
@@ -14,7 +13,6 @@
     "rollup-plugin-livereload": "^1.0.0",
     "rollup-plugin-svelte": "^5.0.3",
     "rollup-plugin-terser": "^5.1.2",
-    "sirv-cli": "^0.4.4",
     "svelte": "^3.0.0"
   },
   "license": "UNLICENSED"
