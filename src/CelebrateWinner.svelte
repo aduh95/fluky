@@ -50,6 +50,11 @@
 
     animation: fadeIn 3s;
   }
+  @media (prefers-reduced-motion: reduce) {
+    h2 {
+      animation: none;
+    }
+  }
   @keyframes fadeIn {
     from {
       opacity: 0;

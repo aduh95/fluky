@@ -24,6 +24,11 @@
     place-self: center;
     animation: fadeIn 800ms ease-out;
   }
+  @media (prefers-reduced-motion: reduce) {
+    header {
+      animation: none;
+    }
+  }
   @keyframes fadeIn {
     from {
       opacity: 0;
