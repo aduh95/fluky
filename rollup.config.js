@@ -20,7 +20,7 @@ export default {
       dev: !production,
       // we'll extract any component CSS out into
       // a separate file - better for performance
-      css: css => {
+      css: (css) => {
         css.write("public/build/bundle.css");
       },
     }),
@@ -65,10 +65,15 @@ function serve() {
       if (!started) {
         started = true;
 
-        require("child_process").spawn("npm", ["run", "start", "--", "--dev"], {
-          stdio: ["ignore", "inherit", "inherit"],
-          shell: true,
-        });
+        Promise.all([import("sirv"), import("polka")]).then(([sirv, polka]) =>
+          polka
+            .default()
+            .use(sirv.default("public"))
+            .listen(5000, (err) => {
+              if (err) console.error(err);
+              else console.log("> Ready on http://localhost:5000/.");
+            })
+        );
       }
     },
   };
