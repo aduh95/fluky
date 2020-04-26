@@ -1,5 +1,6 @@
 :root {
   font-size: 150%;
+  height: 100%;
 
   --bg-color: #f7f0ee;
   --text-color: #226d47;
@@ -38,7 +39,10 @@ body {
   grid-template-rows: 1fr auto;
   min-width: 100vw;
   max-width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  /* mobile hack */
+  min-height: -webkit-fill-available;
+  height: 100%;
   overflow-x: hidden;
   color: var(--text-color);
   margin: 0;

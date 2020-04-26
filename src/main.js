@@ -8,10 +8,4 @@ const app = new App({
   },
 });
 
-const fixBodyHeight = () => {
-  // Safari iOS address bar may make the body longer than the screen
-  document.body.style.maxHeight = window.innerHeight + "px";
-};
-addEventListener("resize", fixBodyHeight, { passive: true });
-
 export default app;
