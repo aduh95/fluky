@@ -84,7 +84,6 @@
   }
 
   footer {
-    font-size: 1rem;
     align-self: end;
     justify-self: center;
     color: var(--bg-color);

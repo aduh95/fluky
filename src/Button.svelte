@@ -18,9 +18,10 @@
     background: none;
 
     box-sizing: content-box;
-    min-width: 200px;
+    min-width: 10rem;
     width: 50vw;
     height: 4rem;
+    line-height: 5.5rem;
     margin-top: 2rem;
     padding: 0;
 

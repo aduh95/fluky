@@ -102,7 +102,6 @@
   footer {
     --bg-color: var(--text-color);
     color: #fff;
-    margin-top: auto;
     align-self: center;
   }
 </style>

@@ -53,3 +53,10 @@ body {
   background-color: var(--bg-color);
   transition: background-color 100ms ease-out;
 }
+
+footer {
+  overflow: hidden;
+  padding: 0 3px;
+  margin-top: auto;
+  font-size: 1rem;
+}
