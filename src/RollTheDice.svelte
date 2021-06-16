@@ -4,7 +4,7 @@
   import createSplitCircle from "./createSplitCircle.js";
   export let items, nextStep;
 
-  const findWinner = angle => {
+  const findWinner = (angle) => {
     const { length } = items;
     const equivalentAngle = 0.75 - (angle % 1);
     return items[(Math.floor(equivalentAngle * length) + length) % length];
@@ -13,7 +13,7 @@
   onMount(() => {
     const circle = createSplitCircle(
       Math.min(window.innerHeight, window.innerWidth) * 0.9,
-      items.map(item => item.color)
+      items.map((item) => item.color)
     );
 
     circle.setAttribute("aria-label", "Rolling wheel");
@@ -23,8 +23,8 @@
 
     document.querySelector("main").append(circle);
 
-    const pick = Math.random() * 9;
-    const finalRotation = `rotate(${5 + pick}turn)`;
+    const pick = Math.random() * 14;
+    const finalRotation = `rotate(${13 + pick}turn)`;
 
     const delay = 1000 + Math.random() * 1000;
     const duration = 6000 + Math.random() * 1000;
@@ -58,6 +58,8 @@
   });
 </script>
 
+<main />
+
 <style>
   main {
     display: flex;
@@ -86,11 +88,9 @@
 
   @media screen and (orientation: portrait) {
     main::after {
-      top: calc(50% - 50vw);
+      top: calc(50% - 45vw - 0.5rem);
       transform: translateX(50%);
       border-width: 1rem;
     }
   }
 </style>
-
-<main />
