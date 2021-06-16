@@ -11,6 +11,25 @@
   );
 </script>
 
+<header>
+  <h1>Fluky</h1>
+  <h2>Anything could happen</h2>
+  <p>
+    This web app is a reproduction of
+    <a href="http://fluky.io">Fluky</a>
+    – a randomizer by
+    <a href="https://humblebee.se/">Humblebee</a>
+    – made as an exercise by
+    <a href="https://github.com/aduh95">aduh95</a>
+  </p>
+</header>
+
+<canvas id="confetti" aria-label="Falling confetti" />
+
+<footer>
+  <Button handleClick={nextStep} text="Start" autofocus />
+</footer>
+
 <style>
   header {
     display: flex;
@@ -40,7 +59,7 @@
   }
 
   h1,
-  h4 {
+  h2 {
     text-transform: uppercase;
     transform: rotate(-9deg);
     margin: 0;
@@ -55,7 +74,7 @@
     transform-origin: bottom;
   }
 
-  h4 {
+  h2 {
     font-size: 1rem;
     line-height: 1rem;
     padding: 0.8rem 0;
@@ -82,22 +101,3 @@
     color: white;
   }
 </style>
-
-<header>
-  <h1>Fluky</h1>
-  <h4>Anything could happen</h4>
-  <p>
-    This web app is a reproduction of
-    <a href="http://fluky.io">Fluky</a>
-    – a randomizer by
-    <a href="https://humblebee.se/">Humblebee</a>
-    – made as an exercise by
-    <a href="https://github.com/aduh95">aduh95</a>
-  </p>
-</header>
-
-<canvas id="confetti" aria-label="Falling confetti" />
-
-<footer>
-  <Button handleClick={nextStep} text="Start" autofocus />
-</footer>
