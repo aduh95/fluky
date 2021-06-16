@@ -1,21 +1,21 @@
 import { promises as fs } from "fs";
 import { join, relative, extname } from "path";
-import Terser from "terser";
+import { minify } from "terser";
 
 const CACHE_VERSION = "v1";
 
-const onInstall = event => {
+const onInstall = (event) => {
   event.waitUntil(
-    caches.open(CACHE_VERSION).then(cache => {
+    caches.open(CACHE_VERSION).then((cache) => {
       return cache.addAll(/* Array of files here */);
     })
   );
 };
 
-const onFetch = event => {
-  const networkResponse = fetch(event.request).then(response => {
+const onFetch = (event) => {
+  const networkResponse = fetch(event.request).then((response) => {
     return response.ok
-      ? caches.open(CACHE_VERSION).then(cache => {
+      ? caches.open(CACHE_VERSION).then((cache) => {
           cache.put(event.request, response.clone());
           return response;
         })
@@ -34,22 +34,20 @@ const onFetch = event => {
   event.respondWith(
     caches
       .match(event.request)
-      .then(response => response || networkResponse)
+      .then((response) => response || networkResponse)
       .catch(console.error)
   );
 };
 
 async function* getPublicFiles(dir) {
-  const files = await fs.readdir(dir);
-  for (const file of files) {
-    const path = join(dir, file);
-    const stats = await fs.stat(path);
-    if (stats.isDirectory()) {
-      yield* getPublicFiles(path);
+  const files = await fs.opendir(dir);
+  for await (const dirent of files) {
+    if (dirent.isDirectory()) {
+      yield* getPublicFiles(join(dir, dirent.name));
     } else if (
-      ![".mp3", ".ogg", ".map", ".webmanifest"].includes(extname(path))
+      ![".mp3", ".ogg", ".map", ".webmanifest"].includes(extname(dirent.name))
     ) {
-      yield path;
+      yield join(dir, dirent.name);
     }
   }
 }
@@ -91,7 +89,7 @@ export default function plugin({ public_folder, enabled }) {
         files.push(relative(public_folder, path));
       }
 
-      const { error, code } = Terser.minify(
+      const { code } = await minify(
         `
         "use strict";
         const CACHE_VERSION = "${CACHE_VERSION}";
@@ -102,9 +100,7 @@ export default function plugin({ public_folder, enabled }) {
         `,
         { toplevel: true }
       );
-      return error
-        ? Promise.reject(error)
-        : fs.writeFile(join(public_folder, outputName), code);
+      return fs.writeFile(join(public_folder, outputName), code);
     },
   };
 }
