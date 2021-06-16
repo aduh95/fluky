@@ -66,6 +66,9 @@
   button:hover::before {
     transform: scaleY(1.25);
   }
+  button:focus:not(:focus-visible) {
+    outline: none;
+  }
 </style>
 
 <button on:click={handleClick} {...$$restProps}>{text}</button>
