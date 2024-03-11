@@ -2,4 +2,11 @@
 /public/build/
 /public/sw.js
 
+*.pnp.*
+**/.yarn/*
+!**/.yarn/patches
+!**/.yarn/plugins
+!**/.yarn/releases
+!**/.yarn/sdks
+
 .DS_Store

@@ -68,9 +68,9 @@ function serve() {
           polka
             .default()
             .use(sirv.default("public"))
-            .listen(5000, (err) => {
+            .listen(function onListen(err) {
               if (err) console.error(err);
-              else console.log("> Ready on http://localhost:5000/.");
+              else console.log(`> Ready on http://localhost:${this.address().port}/.`);
             })
         );
       }
