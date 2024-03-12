@@ -7,12 +7,31 @@
 
   const items = [];
 
+  try {
+    items.push(...JSON.parse(decodeURIComponent(location.hash?.slice(1))));
+  } catch {}
+
+  addEventListener("hashchange", () => {
+    try {
+      const newItems = JSON.parse(decodeURIComponent(location.hash?.slice(1)));
+      if (Array.isArray(newItems)) {
+        items.splice(0, items.length, ...newItems);
+        state.home = false;
+        state.fillItems = true;
+        state.rollTheDice = false;
+        state.celebrateWinner = false;
+        document.documentElement.style.removeProperty("--bg-color");
+      }
+    } catch {}
+  });
+
   function switchToFillItemScreen() {
     state.home = false;
     state.fillItems = true;
   }
 
   function switchToRollTheDice() {
+    location.hash = encodeURIComponent(JSON.stringify(items));
     state.fillItems = false;
     state.rollTheDice = true;
   }

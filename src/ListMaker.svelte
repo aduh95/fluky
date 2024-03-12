@@ -5,6 +5,12 @@
 
   let antiRebound = 0;
 
+  addEventListener("hashchange", () => {
+    requestAnimationFrame(() => {
+      items = items;
+    });
+  });
+
   function addNewItem(e) {
     if (antiRebound === 0) {
       const item = new Item(e.target.value);
@@ -30,7 +36,8 @@
   }
 
   function handleReset(e) {
-    items = [];
+    items.splice(0);
+    items = items;
     e.target.previousElementSibling.focus();
   }
   function handleSubmit(e) {
