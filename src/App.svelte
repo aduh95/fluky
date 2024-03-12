@@ -25,10 +25,8 @@
 
   function backToItemScreen() {
     state.celebrateWinner = false;
-    items.splice(0, items.length);
     state.fillItems = true;
     document.documentElement.style.removeProperty("--bg-color");
-
   }
 </script>
 
