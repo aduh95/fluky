@@ -10,8 +10,8 @@ const hueGenerator = generateHue();
 export default function generateRandomColor() {
   const hue = hueGenerator.next().value;
 
-  // Set saturation and lightness to mid-range values for visual appeal
-  const saturation = Math.random() * 0.2 + 0.6; // 60% to 80%
+  const sixAngle = 12 * Math.PI * hue;
+  const saturation = 0.7 - (Math.cos(sixAngle) + Math.cos(2 * sixAngle) / 3) * 0.15; // 50% to 80%
   const lightness = computeLuminosityLimit(hue, saturation);
 
   return `hsl(${hue}turn,${saturation * 100}%,${lightness * 100}%)`;
