@@ -97,7 +97,7 @@
     <source src="cheer.ogg" type="audio/ogg" />
     Your browser does not support this audio format.
   </audio>
-  <button on:click={muteAudio} hidden>
+  <button on:click={muteAudio} title="toggle audio" hidden>
     <svg
       aria-hidden="true"
       data-icon="volume-mute"
