@@ -30,6 +30,9 @@
     const duration = 6000 + Math.random() * 1000;
     const easing = "cubic-bezier(0, 0, 0.001, 1.01)";
     const delayAfterWhellStop = 300 + Math.random() * 1000;
+    const callNextStepAfterDelay = () => {
+      setTimeout(() => nextStep(findWinner(pick)), delayAfterWhellStop);
+    };
 
     if (Element.prototype.animate) {
       const animation = circle.animate(
@@ -39,9 +42,7 @@
 
       animation.addEventListener("finish", () => {
         circle.style.transform = finalRotation;
-        setTimeout(() => {
-          nextStep(findWinner(pick));
-        }, delayAfterWhellStop);
+        callNextStepAfterDelay();
       });
     } else {
       circle.style.transition = `transform ${duration}ms ${easing}`;
@@ -49,11 +50,7 @@
         circle.style.transform = finalRotation;
       }, delay);
 
-      circle.addEventListener("transitionend", () => {
-        setTimeout(() => {
-          nextStep(findWinner(pick));
-        }, delayAfterWhellStop);
-      });
+      circle.addEventListener("transitionend", callNextStepAfterDelay);
     }
   });
 </script>
